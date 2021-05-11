@@ -1,0 +1,60 @@
+.UserPic{
+	border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.container{
+	margin-bottom: 0px;
+}
+
+.Username{
+	color: white;
+	font-size: 25px;
+	
+}
+
+#SecondNavBar {
+	background-color: black;
+	margin-bottom: 10px;
+	color: white;
+	font-size: 15px;
+}
+
+#Categories{
+	padding: 5px;
+	margin: 0px;
+	text-align: center;
+}
+
+#Categories li {
+	list-style: none; /* No bullet points */
+	display: inline;
+	 padding-left:30px;
+  	padding-right:30px;
+}
+
+
+.ChangePasswordRow{
+	margin-bottom: 5px;
+}
+
+#ChangePasswordButton{
+	height:30px;
+	width: 130px;
+	font-size:13px;
+	color: grey;
+	border-color: grey;
+}
+
+.modal-content{
+	background-color:white !important;
+}
+
+#DiscussionTopics{
+	text-decoration: underline;
+	color: #2363CD;
+}

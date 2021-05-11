@@ -1,0 +1,77 @@
+.searchError {
+    color: red !important;
+}
+
+#filterSearch {
+    width: 40% !important;
+}
+
+
+.container {
+    -webkit-box-shadow: 2px 9px 18px 0px rgba(0,0,0,0.68);
+    -moz-box-shadow: 2px 9px 18px 0px rgba(0,0,0,0.68);
+    box-shadow: 2px 9px 18px 0px rgba(0,0,0,0.68);
+}
+
+.dial {
+    /*position: absolute;*/
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #212121;
+    line-height: 85px;
+    text-align: center;
+    background: #FAFAFA;
+    border-style: solid;
+    border-color: #BBDEFB;
+}
+
+.stats {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.table {
+    background-color: #FAFAFA !important;
+    min-height: 500px;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+  max-height: 500px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+
+.dialWrapper {
+    margin-left: 25%;
+    margin-right: 10%;
+    overflow: auto;
+}
+
+.delete {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.NavIcon{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+}
+
+.moviePoster{
+
+    width: 70px;
+}
+
+.deleteMovie {
+    width: 50px;
+}
+
+.moviePosterVerify {
+
+    width: 100%;
+}
