@@ -203,6 +203,17 @@ discussion_routes.post('/createReply/:cid',(req, res)=>{
 
 
 /*
+    Get the number of comments currently in the database
+*/
+discussion_routes.get('/getCommentsCount', (req, res) => {
+    Comment.countDocuments({}, (error, num) => {
+        res.send({
+            "value": num
+        })
+    })
+})
+
+/*
     return given movie's discussions 
 */
 discussion_routes.get('/getMovieDiscussions/:id', (req, res) => {
@@ -465,5 +476,6 @@ discussion_routes.get('/userDiscussions/:username', (req, res)=>{
          res.status(400).send(error)
     })
 })
+
 
 module.exports = discussion_routes;

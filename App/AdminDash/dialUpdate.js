@@ -63,6 +63,12 @@ function updatePost() {
 }
 
 function updateComment() {
+	fetch("http://localhost:8000/getCommentsCount").then((result) => {
+		return result.json()
+	}).then((data) => {
+		CommentDial.innerText = data.value
+	}).catch((error)=> {
+		console.log(error)
+	})
 
-	
 }
