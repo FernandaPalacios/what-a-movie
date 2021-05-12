@@ -73,7 +73,8 @@ h1, input {
 
 .inputButton {
     position: relative;
-    width: 85%;
+    width: 50%;
+    border-radius: .30rem;
     height: 50px;
     display: block;
     margin: 30px auto 30px;
@@ -125,4 +126,7 @@ font-family: cursive;
     left:50%;
     align-items: center;
     text-align: center !important;
+}
+#signup_box{
+    margin:auto;
 }
