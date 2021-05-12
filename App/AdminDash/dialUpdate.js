@@ -1,6 +1,5 @@
 "use strict"
 
-// const domain = "http://localhost:8000"
 
 const userDial = document.querySelector("#totalUsers")
 
@@ -30,7 +29,7 @@ function updateDials() {
 
 function updateUser() {
 
-	fetch("http://localhost:8000/userCount").then ((result) => {
+	fetch("/userCount").then ((result) => {
 		return result.json()
 	}).then((data) => {
 		userDial.innerText = data.value
@@ -42,7 +41,7 @@ function updateUser() {
 
 function updateFilm() {
 
-	fetch("http://localhost:8000/getMovieCount").then((result) => {
+	fetch("/getMovieCount").then((result) => {
 		return result.json()
 	}).then((data) => {
 		filmDial.innerText = data.value
@@ -53,7 +52,7 @@ function updateFilm() {
 
 function updatePost() {
 
-	fetch("http://localhost:8000/getDiscussionCount").then((result) => {
+	fetch("/getDiscussionCount").then((result) => {
 		return result.json()
 	}).then((data) => {
 		PostDial.innerText = data.value
@@ -63,7 +62,7 @@ function updatePost() {
 }
 
 function updateComment() {
-	fetch("http://localhost:8000/getCommentsCount").then((result) => {
+	fetch("/getCommentsCount").then((result) => {
 		return result.json()
 	}).then((data) => {
 		CommentDial.innerText = data.value
