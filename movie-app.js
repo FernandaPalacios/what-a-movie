@@ -13,6 +13,7 @@ movie.getMovie("Furious 7", 2015).then((result) => {
     console.log(error)
 });
 
+//not used, populate with other methods
 movie.getNowPlaying().then((result) => {
     let count = 0;
     for(let i = 0; i < result.length; i++) {
