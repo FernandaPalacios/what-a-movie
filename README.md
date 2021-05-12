@@ -9,3 +9,6 @@
 ## deploy
 - heroku login -i
 - git push heroku main
+
+## populate with trending movies
+- http://localhost:8000/getTrending
