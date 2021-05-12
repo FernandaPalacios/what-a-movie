@@ -50,14 +50,16 @@ function populateMovieSet() {
 				})
     }
     movieDiscussionSet = tempMovieSet
-    google.charts.load('current', {'packages':['corechart']});
-    google.charts.setOnLoadCallback(drawChartView);
+    // Draw Popular Discussion Topics Pie Chart
+    // google.charts.load('current', {packages: ['corechart']});
+    // google.charts.setOnLoadCallback(drawChartView);
 	})
 }
 
 // Draw the chart and set the chart values
 // Will pull chart value count from database
 function drawChartView() {
+  console.log("draw chart")
 
   console.log(movieDiscussionSet)
   var data = google.visualization.arrayToDataTable(movieDiscussionSet);
@@ -76,4 +78,5 @@ function drawChartView() {
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechartV'));
   chart.draw(data, options);
+  console.log("after drawing")
 }
