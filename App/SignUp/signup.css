@@ -121,12 +121,18 @@ font-family: cursive;
 .file{
     display: inline-block;
 }
-.file_btn{
-    position:relative;
-    left:50%;
-    align-items: center;
-    text-align: center !important;
-}
 #signup_box{
     margin:auto;
+}
+
+#profilePhotoContainer{
+    margin-left:15%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#choosePhotoContainer{
+    text-align:left;
+    margin-top:20px;
+    margin-bottom: 10px;
 }
