@@ -56,6 +56,28 @@ discussion_routes.get('/getAllComments', (req, res) => {
     }).catch(err => {log(err)})
 })
 
+/*
+    delete all comments in the database
+*/
+discussion_routes.delete('/deleteAllComments', (req, res) => {
+    Comment.find().then((comments) => {
+        ids = []
+        comments.map((comment)=>
+        {   id = comment._id
+            ids.push(id)
+            Comment.findByIdAndRemove(id, (err, comment) =>{
+                if(err){res.send(err)}
+            }); 
+        })
+        
+        res.send({message: "deleted comments", ids:ids})
+    }).catch(err => {log(err)})
+
+    
+})
+
+
+
 
 /*
     Get the number of discussion currently in the database
@@ -242,6 +264,25 @@ discussion_routes.delete('/deleteDiscussions/:id', (req, res) => {
     });
 })
 
+/*
+    Deletes all discussions in the database
+*/
+discussion_routes.delete('/deleteAllDiscussions', (req, res) => {
+    Discussion.find().then((discussions) => {
+        ids= []
+        discussions.map((discussion)=>
+        {   id = discussion._id
+            ids.push(id)
+            Discussion.findByIdAndRemove(id, (err, discussion) =>{
+                if(err){res.send(err)}
+            }); 
+        })
+        
+        res.send({message: "deleted discussions", ids:ids})
+    }).catch(err => {log(err)})
+
+    
+})
 
 /*
     Deletes given element from the Array
