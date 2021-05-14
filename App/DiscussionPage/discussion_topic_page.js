@@ -330,37 +330,55 @@ function deleteReplies(replies){
 }
 
 
+// function deleteComment(e){
+// 	e.preventDefault();
+
+// 	let comments = e.target.parentElement.parentElement.parentElement;
+
+// 	let postToRemove = e.target.parentElement.parentElement;
+// 	fetch('/getComment/'+postToRemove.id)
+//     .then((res) => { 
+//         if (res.status === 200) {
+//            return res.json() 
+//        } else {
+//             alert('Could not get the discussion')
+//        }                
+//     })
+//     .then((json) => {
+//     	let parentComment = thisDiscussion._id
+// 	    	if (thisUser._id == json.user){
+// 	    	fetch('/getReplies/'+postToRemove.id)
+// 		    .then((replies) => {
+// 		    	//if (replies.length > 0){deleteReplies(replies)}
+// 				fetch('/deleteComment/'+parentComment+'/'+postToRemove.id, {
+// 			    method: 'DELETE'}).then(response => {
+// 				comments.removeChild(postToRemove);
+// 				})
+// 		    })
+// 	}else{
+//     	alert("You do not have permission to delete this element")
+//     }
+//     })
+	
+// }
+
 function deleteComment(e){
 	e.preventDefault();
 
 	let comments = e.target.parentElement.parentElement.parentElement;
 
 	let postToRemove = e.target.parentElement.parentElement;
-	fetch('/getComment/'+postToRemove.id)
-    .then((res) => { 
-        if (res.status === 200) {
-           return res.json() 
-       } else {
-            alert('Could not get the discussion')
-       }                
-    })
-    .then((json) => {
-    	let parentComment = thisDiscussion._id
-	    	if (thisUser._id == json.user){
-	    	fetch('/getReplies/'+postToRemove.id)
-		    .then((replies) => {
-		    	//if (replies.length > 0){deleteReplies(replies)}
-				fetch('/deleteComment/'+parentComment+'/'+postToRemove.id, {
-			    method: 'DELETE'}).then(response => {
-				comments.removeChild(postToRemove);
-				})
-		    })
-	}else{
-    	alert("You do not have permission to delete this element")
-    }
-    })
-	
+	let cid = postToRemove.id
+
+	let discId = thisDiscussion._id
+
+	fetch('/deleteComment/'+discId+'/'+postToRemove.id, {
+		method: 'DELETE'}).then(response => {
+		comments.removeChild(postToRemove);
+		})
 }
+
+	
 
 function deleteReply(e){
 	e.preventDefault();

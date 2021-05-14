@@ -296,6 +296,10 @@ function deleteArrayElement(comments, cid) {
 
 }
 
+/*
+    Deletes given comment (but not from discussion it belongs to)
+*/
+
 discussion_routes.delete('/deleteComment/:id/', (req, res) => {
     // Add code here
     const id = req.params.id
@@ -315,7 +319,7 @@ discussion_routes.delete('/deleteComment/:id/', (req, res) => {
 })
 
 /*
-    Deletes given comment from the database
+    Deletes given comment from the database (and from discussion it belongs to)
 */
 
 discussion_routes.delete('/deleteComment/:id/:cid', (req, res) => {
