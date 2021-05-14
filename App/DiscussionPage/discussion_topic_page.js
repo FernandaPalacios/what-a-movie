@@ -691,6 +691,7 @@ function createComment(){
 			}
 
 		    }) 
+			document.getElementById("postText").value = "";
         	
 	}
 }
