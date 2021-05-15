@@ -541,7 +541,7 @@ discussion_routes.post('/populateDiscussions', (req, res)=>{
             const disc = new Discussion({
                 title: `title${index}`,
                 discussion_content: `discussion content${index}`,
-                user: users[Math.floor(Math.random() * users.length) + 1]._id,
+                user: users[Math.floor(Math.random() * users.length)]._id,
                 movie: movie._id,
                 img: `https://picsum.photos/id/${index*10}/300`,
                 comments: [],
