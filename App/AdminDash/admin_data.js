@@ -473,7 +473,7 @@ function createDataRow(currentUser) {
 	dataTh.setAttribute("scope", "row")
 	let img = document.createElement('img')
 	img.className = "icons"
-	img.setAttribute("src", currentUser.image)
+	img.setAttribute("src", currentUser.image || '../Pictures/user_icon.png')
 	dataTh.appendChild(img)
 
 	let dataName = document.createElement('td')
