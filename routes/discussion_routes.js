@@ -405,6 +405,33 @@ discussion_routes.get('/canEdit/:id', (req, res) => {
         }
     }); 
 })
+
+/*
+    return true if current user can edit given comment
+    always true if current user is an admin
+*/
+discussion_routes.get('/canEditComment/:id', (req, res) => {
+    const id = req.params.id
+    
+    User.findById(req.session.user, (err, user) =>{
+        if(err){res.send(err)}
+        
+        else{
+            if(user.admin==true){
+                res.send(true)
+            }else{
+                Comment.findById(id,(error, comment)=>{
+                    if(!error){
+                        const result = comment.user == req.session.user
+                        res.send(result)
+                    }
+                })
+            }
+        }
+    }); 
+})
+
+
 discussion_routes.patch('/resetComments/:id', (req, res) => {
     const id = req.params.id;
 
