@@ -296,6 +296,16 @@ user_routes.delete('/deleteFinal/:id', (req, res) => {
 })
 
 
+/*
+    Deletes all users in the database
+*/
+user_routes.delete('/deleteAllUsers', (req, res) => {
+    User.deleteMany({ }).then((result) => {
+        res.send(result)
+    })
+})
+
+
 user_routes.get('/currentUser', (req, res)=>{
     User.findById(req.session.user).then((result)=>{
         if(!result){
