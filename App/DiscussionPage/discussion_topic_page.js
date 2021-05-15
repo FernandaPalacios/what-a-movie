@@ -329,7 +329,7 @@ function deleteReplies(replies){
 	}
 }
 
-
+// orig (not working)
 // function deleteComment(e){
 // 	e.preventDefault();
 
@@ -362,6 +362,7 @@ function deleteReplies(replies){
 	
 // }
 
+// delete comment without permissions check (working)
 function deleteComment(e){
 	e.preventDefault();
 
@@ -376,6 +377,33 @@ function deleteComment(e){
 		method: 'DELETE'}).then(response => {
 		comments.removeChild(postToRemove);
 		})
+}
+
+// delete comment with permissions check
+function deleteComment(e){
+	e.preventDefault();
+
+	let comments = e.target.parentElement.parentElement.parentElement;
+
+	let postToRemove = e.target.parentElement.parentElement;
+	let cid = postToRemove.id
+
+	let discId = thisDiscussion._id
+
+
+	fetch('/canEditComment/'+cid).then(response => {
+    	return response.json()}).then((canEdit)=>{
+			if(canEdit){
+				fetch('/deleteComment/'+discId+'/'+postToRemove.id, {
+					method: 'DELETE'}).then(response => {
+					comments.removeChild(postToRemove);
+					})
+			}
+			else{
+				alert("You do not have permission to delete this element")
+			}
+		})
+
 }
 
 	
