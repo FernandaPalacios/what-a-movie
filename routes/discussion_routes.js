@@ -529,17 +529,33 @@ discussion_routes.post('/populateDiscussions', (req, res)=>{
     // for each movie create a discussion by any user
 
     Promise.all([
-        Movie.find()
-        , 
+        Movie.find(), 
         User.find()
-    ])
-    .then((results) => {
-       
-        res.send({
-            movies: results[0], users: results[1]})
-    });
-    // have each user comment on each discussion
+    ]).then((results) => {
 
+        const movies = results[0]
+        const users = results[1]
+
+        return Promise.all(movies.map((movie, index)=>{
+
+            const disc = new Discussion({
+                title: `title${index}`,
+                discussion_content: `discussion content${index}`,
+                user: users[1]._id,
+                movie: movie._id,
+                img: "https://picsum.photos/200",
+                comments: [],
+                likes:  0, 
+                liked_user: []
+              })
+              disc.save(function (error, newDis) {
+                if (error) {
+                    res.send(error)
+                } 
+              });
+        }))
+       
+    }).then(result=>res.send("created discussions"));
 
     
 })
