@@ -539,7 +539,7 @@ discussion_routes.post('/populateDiscussions', (req, res)=>{
         return Promise.all(movies.map((movie, index)=>{
 
             const disc = new Discussion({
-                title: `title${index}`,
+                title: `discussion title${index}`,
                 discussion_content: `discussion content${index}`,
                 user: users[Math.floor(Math.random() * users.length)]._id,
                 movie: movie._id,
