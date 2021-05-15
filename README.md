@@ -10,10 +10,10 @@
 - heroku login -i
 - git push heroku main
 
+## populating db with mocked data
+use api requests to delete existing:
 
-## populate with trending movies
-- http://localhost:8000/getTrending
+- movies, users, discussions, comments
 
-movies obtained from: https://developers.themoviedb.org/3/getting-started/introduction
-
-
+and create:
+- movies, users then discussions
