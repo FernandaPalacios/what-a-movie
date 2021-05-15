@@ -1,6 +1,8 @@
 const discussion_routes = require('express').Router();
 const { Discussion } = require('../model/Discussion.js')
 const { Comment } = require('../model/Comment.js')
+const { Movie } = require('../model/Movie')
+
 const { User } = require('../model/User')
 const fs = require('fs');
 const log = console.log
@@ -520,6 +522,26 @@ discussion_routes.get('/userDiscussions/:username', (req, res)=>{
     }).catch(error=>{
          res.status(400).send(error)
     })
+})
+
+
+discussion_routes.post('/populateDiscussions', (req, res)=>{
+    // for each movie create a discussion by any user
+
+    Promise.all([
+        Movie.find()
+        , 
+        User.find()
+    ])
+    .then((results) => {
+       
+        res.send({
+            movies: results[0], users: results[1]})
+    });
+    // have each user comment on each discussion
+
+
+    
 })
 
 

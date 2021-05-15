@@ -325,7 +325,7 @@ user_routes.delete('/deleteAllUsers', (req, res) => {
 */
 user_routes.post('/populateUsers', (req, res) => {
 
-    const numUsers = 20
+    const numUsers = 10
     Promise.all(Array.from({length: numUsers}, (_, i) => i + 1).map(user_number =>{
         const userData = new User({
         username: `username${user_number}`,
