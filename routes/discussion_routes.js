@@ -1,6 +1,8 @@
 const discussion_routes = require('express').Router();
 const { Discussion } = require('../model/Discussion.js')
 const { Comment } = require('../model/Comment.js')
+const { Movie } = require('../model/Movie')
+
 const { User } = require('../model/User')
 const fs = require('fs');
 const log = console.log
@@ -520,6 +522,42 @@ discussion_routes.get('/userDiscussions/:username', (req, res)=>{
     }).catch(error=>{
          res.status(400).send(error)
     })
+})
+
+
+discussion_routes.post('/populateDiscussions', (req, res)=>{
+    // for each movie create a discussion by any user
+
+    Promise.all([
+        Movie.find(), 
+        User.find()
+    ]).then((results) => {
+
+        const movies = results[0]
+        const users = results[1]
+
+        return Promise.all(movies.map((movie, index)=>{
+
+            const disc = new Discussion({
+                title: `title${index}`,
+                discussion_content: `discussion content${index}`,
+                user: users[Math.floor(Math.random() * users.length) + 1]._id,
+                movie: movie._id,
+                img: `https://picsum.photos/id/${index*10}/300`,
+                comments: [],
+                likes:  0, 
+                liked_user: []
+              })
+              disc.save(function (error, newDis) {
+                if (error) {
+                    res.send(error)
+                } 
+              });
+        }))
+       
+    }).then(result=>res.send("created discussions"));
+
+    
 })
 
 
