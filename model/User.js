@@ -23,7 +23,7 @@ const UserSchema = new mongoose.Schema({
 
     icon: {
         type: String,
-        required: true
+        required: false
     },
 
     like: {
