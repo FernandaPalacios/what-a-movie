@@ -296,14 +296,6 @@ user_routes.delete('/deleteFinal/:id', (req, res) => {
 })
 
 
-/*
-    Deletes all users in the database
-*/
-user_routes.delete('/deleteAllUsers', (req, res) => {
-    User.deleteMany({ }).then((result) => {
-        res.send(result)
-    })
-})
 
 
 user_routes.get('/currentUser', (req, res)=>{
@@ -316,5 +308,41 @@ user_routes.get('/currentUser', (req, res)=>{
         }
     })
 })
+
+
+/*
+    Deletes all users in the database
+*/
+user_routes.delete('/deleteAllUsers', (req, res) => {
+    User.deleteMany({ }).then((result) => {
+        res.send(result)
+    })
+})
+
+
+/*
+    Populate 20 users in the database
+*/
+user_routes.post('/populateUsers', (req, res) => {
+
+    const numUsers = 20
+    Promise.all(Array.from({length: numUsers}, (_, i) => i + 1).map(user_number =>{
+        const userData = new User({
+        username: `username${user_number}`,
+        password: "password",
+        admin: false,
+        like:0,
+      })
+      userData.save(function (error, user) {
+        if (error) {
+            res.send(error)
+        } 
+      })
+
+    })).then(result=>res.send(result))
+    
+  
+})
+
 
 module.exports = user_routes
