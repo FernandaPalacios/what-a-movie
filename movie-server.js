@@ -1,8 +1,8 @@
 'use strict'
+const config=require('config');
 const log = console.log;
 
-// const databaselink='mongodb://Micari:password1@ds021681.mlab.com:21681/conspire_db'
-const databaselink='mongodb+srv://user_1:password_1@cluster0.eaunn.mongodb.net/test?retryWrites=true&w=majority'
+const databaselink= process.env.MONGODB_URI || config.get('mongoURI');
 
 const express = require('express')
 const app = express()

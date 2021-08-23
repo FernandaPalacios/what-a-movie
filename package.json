@@ -4,7 +4,7 @@
   "description": "",
   "main": "movie-server.js",
   "engines": {
-    "node": "8.x"
+    "node": "10.x"
   },
   "scripts": {
     "start": "node movie-server.js",
@@ -15,6 +15,7 @@
   "dependencies": {
     "bcrypt": "^3.0.2",
     "cloudinary": "^1.13.2",
+    "config": "^3.3.6",
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "express-session": "^1.15.6",
