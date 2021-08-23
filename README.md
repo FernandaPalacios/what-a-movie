@@ -1,7 +1,7 @@
 # Movie Review Web App
 
 ## Local Development
-- `yarn`
-- `yarn start`
+- `npm`
+- `npm run start`
 - open: http://localhost:8000/loginPage
 
